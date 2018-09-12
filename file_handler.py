@@ -10,3 +10,14 @@ def file_read(filename = 'text_albums_data.txt'):
 
 
 
+def write_new_record( new_record , filename = 'text_albums_data.tx'):
+    # new record jest tablica
+    string_new_record = ''
+    for i in new_record:
+        string_new_record = string_new_record + ',' + i
+    string_new_record = string_new_record[1:]
+    with open(filename , 'a+') as file:
+        file.write('\n')
+        file.write(string_new_record)
+    return 0
+
