@@ -21,3 +21,14 @@ def write_new_record( new_record , filename = 'text_albums_data.tx'):
         file.write(string_new_record)
     return 0
 
+
+
+
+def file_read_lines(filename = 'text_albums_data.txt'):
+    with open(filename , 'r') as file:
+        list_of_lines = file.readlines()
+        new_list_of_lines = []
+        for list in list_of_lines:
+            list = list[0:-1]
+            new_list_of_lines = new_list_of_lines + [list]            
+    return new_list_of_lines
