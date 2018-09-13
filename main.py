@@ -9,7 +9,7 @@ def main():
     while x != '0':
         display_the_menu_options()
         choice = input('choice option') 
-        choose_option(choice)
+        do_option(choice)
 
 
 
