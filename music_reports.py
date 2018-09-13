@@ -1,6 +1,6 @@
 def do_option(your_input):
     if your_input == '1':
-        fun_1()                           # tylko wyswietla nazwy albumow
+        print(view_all_imported_albums(list_with_records))      # tylko wyswietla nazwy albumow
 
     elif your_input == '2':
         fun_2()
@@ -17,8 +17,8 @@ def do_option(your_input):
     elif your_input == '6':
         fun_6()
 
-    elif your_input == '7':
-        fun_7()                         #tylko wyswietla tabele ze wszystkimi danymi
+    elif your_input == '7'              #tylko wyswietla tabele ze wszystkimi danymi
+                                        # to wszystko w displayu
 
     elif your_input == '8':
         fun_4()
@@ -31,6 +31,20 @@ def do_option(your_input):
 
     elif your_input == '11':
         fun_7()
+
+
+
+
+def view_all_imported_albums(album_list):
+    list_with_name_of_all_albums = []
+    for name in album_list:
+        list_with_name_of_all_albums += [name[1]]
+    return list_with_name_of_all_albums
+
+
+
+
+
 
 
 
@@ -110,7 +124,7 @@ def from_time(list_with_records,time):
     x = []
     for record in new_list_with_records:
         if record[-1][0] > time[0] or record[-1][0] == time[0] and record[-1][1] >= time[1]:
-            x = x + [record]
+            x = x + [record[:-1]]
     return(x)
 
 
@@ -121,9 +135,9 @@ def to_time(list_with_records,time):
     x = []
     for record in new_list_with_records:
         if record[-1][0] < time[0] or record[-1][0] == time[0] and record[-1][1] <= time[1]:
-            x = x + [record]
+            x = x + [record[:-1]]
     return(x)
 
 
 a = [['Pink Floyd','The Dark Side Of The Moon','1973','progressive rock','142:20'],['Britney Spears','Baby One More Time','1999','pop','43:20'],['The Beatles','Revolver','1966','rock','143:43']]
-print(from_time(a,[142,20]))
+print(view_all_imported_albums(a))
