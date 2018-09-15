@@ -15,6 +15,7 @@ def display_the_menu_options():
     print("Press '10' to view albums to a certain year")
     print("Press '11' to save all albums to external file")
     print("Press '12' to delete number")
+    
     print("Press '13' to organise")
     print("Press '14' to change record")
     print("Press '0' to quit")

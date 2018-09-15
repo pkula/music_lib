@@ -119,6 +119,13 @@ def delete_record(list,number_of_list):
     new_list = list[:number_of_list] + list[number_of_list +1:]
     return new_list
 
+def por(table_1,table_2):       # bierze 2 tabele i wypluwa czesc wspolna
+    new_table = []
+    for element_1 in table_1:
+        for element_2 in table_2:
+            if element_1 == element_2:
+                new_table = new_table + [element_1]
+    return new_table
 
 
 
@@ -146,37 +153,28 @@ def define_user_input(user_input):
     if user_input == "1":
         display.display(file_handler.file_read())
         wait()
-
-
-
     elif user_input == "2":
         genre = inputs.get_genre()
         display.display(find_by_genre(genre, file_handler.file_read()))
         wait()
-
     elif user_input == "3":
         time = inputs.get_lenght()
         display.display(display_by_length(time, file_handler.file_read()))
         wait()
-
     elif user_input == "4":
         artist = inputs.get_artist()
         display.display(display_by_artist(artist, file_handler.file_read()))
         wait()
-
     elif user_input == "5":
         album = inputs.get_album()
         display.display(display_by_album_name(album, file_handler.file_read()))
         wait()
-
     elif user_input == "6":
         display.display([find_longest_album(file_handler.file_read())])
         wait()
-
     elif user_input == "7":
         display.display([find_shortest_album(file_handler.file_read())])
         wait()
-
     elif user_input == "8":
         artist_name = inputs.get_artist()
         album_name = inputs.get_album()
@@ -188,25 +186,21 @@ def define_user_input(user_input):
         print(record)
         file_handler.write_new_record(record)
         wait()
-
     elif user_input == "9":
         year = inputs.get_year()
         display.display(to_date(file_handler.file_read(), year))
         wait()
-
     elif user_input == "10":
         year = inputs.get_year()
         display.display(from_date(file_handler.file_read(), year))
         wait()
-
     elif user_input == "11":
         file_name = input('Enter the name of your file:\n')
         file = file_handler.file_read()
         file_handler.write_all(file, file_name)
         print("\nSuccessfully created.\n")
         wait()
-
-    elif user_input == "12":      
+    elif user_input == "12":
         display.display(file_handler.file_read())
         print('Wich number of list do you like to delete')
         number_to_delete = inputs.get_number() - 1
@@ -214,4 +208,18 @@ def define_user_input(user_input):
         file = delete_record(file,number_to_delete)
         file_handler.write_all(file, filename='text_albums_data.txt')
         print("\nSuccessfully delete.\n")
+        wait()
+
+
+    elif user_input == "14":                #bez prooga
+        display.display(file_handler.file_read())
+        print('Wich number of list do you like change')
+        number_to_change = inputs.get_number() - 1
+        display.display([file_handler.file_read()[number_to_change]])
+        file = file_handler.file_read()
+        print('artist:0\n','album:1\n','year:2\n','genre:3\n','year:4\n',)
+        record_to_change = int(input('record to change'))
+        file[number_to_change][record_to_change] = input('na co zamienic')
+        file_handler.write_all(file, filename='text_albums_data.txt')
+        print("\nSuccessfully\n")
         wait()
